@@ -1,13 +1,22 @@
 package Model;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
+@Entity
+@Table(name = "product")
 public class Product implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
     private Double price;
     private Long quantity;
     private Long sdr;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Product(String description, Double price, Long quantity, Category category, Long sdr) {

@@ -1,66 +1,47 @@
 package App;
 
+import Model.Category;
+import Model.Product;
 import Service.CategoryDaoImp;
 import Service.ProductDaoImpl;
+
+import java.util.List;
 
 public class Main {
   public static void main(String[] args) {
 
-    // Initialize DAO implementations
     CategoryDaoImp categoryDao = new CategoryDaoImp();
     ProductDaoImpl productDao = new ProductDaoImpl();
 
-    // Test CRUD operations for Category
-    System.out.println("===== CATEGORY CRUD OPERATIONS =====");
+//    Category electronics = new Category("All electronic items", "Electronics");
+//    Category groceries = new Category("All groceries", "Groceries");
+//    categoryDao.createe(electronics);
+//    categoryDao.createe(groceries);
 
-    // Create a new category
-//    Category newCategory = new Category();
-//    newCategory.setName("TEST");
-//    newCategory.setDescription("TEST");
-//    categoryDao.create(newCategory);
+    // Fetch all categories
+    List<Category> allCategories = categoryDao.getAll();
 
-    // Find category by id
-//    Category foundCategory = categoryDao.findById(1L);
-//    System.out.println("found Category : " + foundCategory);
-//    foundCategory.setName("amine");
+    // Print all categories using Streams
+    System.out.println("All Categories:");
+    allCategories.forEach(category -> System.out.println(category.getName() + ": " + category.getDescription()));
 
-//    categoryDao.update(foundCategory.getId(), foundCategory);
-//    Category foundCategory1 = categoryDao.findById(1L);
-//    System.out.println("Updated Category: " + foundCategory1);
+    // Create and save Products
+//    Product phone = new Product("Mouse", 799.99, 100L, electronics,1L);
+//    Product tv = new Product("Mac", 1499.99, 50L, electronics,2L);
+//    Product apple = new Product( "Iphone", 0.5, 1000L,electronics, 3L);
+//    productDao.createe(phone);
+//    productDao.createe(tv);
+//    productDao.createe(apple);
 
-    // Find all categories
-//    System.out.println("All Categories:");
-//    categoryDao.findAll().forEach(System.out::println);
 
-    // Delete category
-//    categoryDao.delete(2L);
+    // Fetch all products
+    List<Product> allProducts = productDao.getAll();
 
-    // Test CRUD operations for Product
-//    System.out.println("===== PRODUCT CRUD OPERATIONS =====");
+    // Filter products by category using streams
+    // Fetch a single product by ID
+    // Update a product
+    // Delete a product (assuming product ID 2 exists)
+    // Example using map to transform product names
 
-//    // Create a new product
-//    Product newProduct = new Product();
-//    newProduct.setDescription("Smartphone");
-//    newProduct.setPrice(599.99);
-//    newProduct.setQuantity(100L);
-//    newProduct.setSdr(1L);
-//    newProduct.setCategory(newCategory); // Assuming the newCategory is now persisted
-//    productDao.create(newProduct);
-
-    // Find product by id
-//    Product foundProduct = productDao.findById(1L);
-//    System.out.println("Found Product: " + foundProduct);
-
-    // Update product
-//    foundProduct.setPrice(549.99);
-//    productDao.update(foundProduct.getId(), foundProduct);
-//    System.out.println("Updated Product: " + foundProduct);
-
-    // Find all products
-//    System.out.println("All Products:");
-//    productDao.findAll().forEach(System.out::println);
-
-    // Delete product
-//    productDao.delete(foundProduct.getId());
   }
 }
